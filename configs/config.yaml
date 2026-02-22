@@ -1,0 +1,48 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - model: conformer_ctc
+  - data: librispeech
+  - training: default
+  - evaluation: wer_cer
+  - override hydra/launcher: basic
+
+# Experiment configuration
+experiment:
+  name: "asr_experiment"
+  version: "1.0.0"
+  tags: ["asr", "speech_recognition", "research"]
+  
+# Random seed for reproducibility
+seed: 42
+
+# Device configuration
+device: auto  # auto, cpu, cuda, mps
+
+# Logging configuration
+logging:
+  level: INFO
+  log_dir: "logs"
+  use_wandb: false
+  wandb_project: "speech-recognition-system"
+  wandb_entity: null
+
+# Checkpointing
+checkpointing:
+  save_dir: "checkpoints"
+  save_best: true
+  save_last: true
+  monitor: "val_wer"
+  mode: "min"
+  save_top_k: 3
+
+# Data paths
+data_root: "data"
+output_dir: "assets"
+
+# Privacy and ethics
+privacy:
+  anonymize_filenames: true
+  remove_pii_from_logs: true
+  disclaimer_shown: false

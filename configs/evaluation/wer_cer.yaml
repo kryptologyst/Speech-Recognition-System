@@ -1,0 +1,30 @@
+# @package evaluation
+
+_target_: speech_recognition.eval.Evaluator
+
+# Evaluation metrics
+metrics:
+  - wer  # Word Error Rate
+  - cer  # Character Error Rate
+  - token_accuracy
+  - latency
+  - rtf  # Real Time Factor
+
+# Decoding configuration
+decoding:
+  method: "greedy"  # greedy, beam_search
+  beam_size: 5
+  length_penalty: 1.0
+  temperature: 1.0
+
+# Language model fusion for evaluation
+lm_fusion:
+  enabled: false
+  lm_weight: 0.3
+  word_score: 0.0
+  sil_score: 0.0
+
+# Output configuration
+save_predictions: true
+save_audio_samples: true
+num_samples_to_save: 10

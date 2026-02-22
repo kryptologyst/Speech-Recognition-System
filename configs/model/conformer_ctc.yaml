@@ -1,0 +1,22 @@
+# @package model
+
+_target_: speech_recognition.models.ConformerCTC
+
+# Model architecture
+input_dim: 80
+encoder_dim: 512
+num_encoder_layers: 17
+num_attention_heads: 8
+feedforward_expansion_factor: 4
+conv_expansion_factor: 2
+dropout: 0.1
+conv_kernel_size: 31
+
+# Vocabulary
+vocab_size: 5000  # Will be set based on tokenizer
+blank_id: 0
+
+# Language model fusion
+use_lm: false
+lm_weight: 0.3
+lm_path: null
